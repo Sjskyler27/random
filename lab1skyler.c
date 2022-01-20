@@ -1,43 +1,37 @@
-/***********************************************************************
+/******************************************************************************
 * Program:
 *    Lab C_lab, ECEN 324 Learning C Lab
 *    Brother Jones, ECEN 324
 * Author:
-*    Your Name
+*    skyler simpson
 * Summary:
-*    Descriptive text ...
-************************************************************************/
+*    tests c program
+*******************************************************************************/
 
-#include <iostream>
-#include <iomanip>
-using namespace std;
+#include <stdio.h>
 
 #define PI 3.1415926
 
-/***********************************************************************
-* descriptive text goes here
-***********************************************************************/
-int main (void)
+int main()
 {
-   // Printing various items
- 
    const char LETTER = 'A';
-   cout << 24 << '\n';
-   cout << PI << endl;
-   cout << LETTER << endl;
- 
-   float payRate = 10.50;
+   printf("24\n");
+   printf("%0.5f\n",PI);
+   printf("%c\n", LETTER);
+
+
+   double payRate = 10.50;
    int hours = 40;
  
-   cout << "Users pay rate: $" << payRate << endl; 
-   cout << " Hours worked: " << hours << endl;
-   cout << "    Gross Pay: $" << hours * payRate << endl;
- 
+   printf("Users pay rate: $%0.1f\n", payRate);
+   printf(" Hours worked: %d\n",hours);
+   printf("    Gross Pay: $%0.0f\n",payRate*hours);
+
    int number;
-   cerr << "Enter number: ";
-   cin >> number;
-   cout << "Twice " << number << " is " << number * 2 << endl;
- 
+   printf("Enter number: ");
+   scanf("%d", &number);
+   printf("Twice %d is %d\n", number, number*2);
+
    /*********************************************************************/
    /*********************** Output an Integer ***************************/
    /*********************************************************************/
@@ -46,20 +40,18 @@ int main (void)
  
    // Output the integer with the default formatting.
    //
-   cout << endl;                      // output a blank line
-   cout << "Integer: " << anInt << " ###\n";
+   printf("\nInteger: %d ###\n", anInt);                      // output a blank line
  
    // Output the integer in a fixed field width of 10.
    // The setw() manipulator takes effect only for the next output object.
    // The object will be right justified in the field.
    //
-   cout << "Integer: " << setw(10) << anInt << " ###\n";
- 
+   printf("Integer: %10d ###\n", anInt); 
+
    // Output the integer in a fixed field width of 10
    // and left justified in the field.
    //
-   cout << setiosflags(ios::left);
-   cout << "Integer: " << setw(10) << anInt << " ###\n\n";
+   printf("Integer: %-10d ###\n", anInt);
  
    
    /*********************************************************************/
@@ -68,41 +60,39 @@ int main (void)
  
    // Output the float with the default formatting.
    //
-   cout << "  Float: " << aFloat << " ###\n";
- 
+   printf("\n  Float: %0.1f ###\n", aFloat);
+
    // Output the float in a fixed field width of 10.
    // The setw() manipulator takes effect only for the next output object.
    // The float object is left justified in the field because the setiosflags()
    // done previously is still in effect.
    //
-   cout << "  Float: " << setw(10) << aFloat << " ###\n";
- 
+   printf("  Float: %-10.1f ###\n", aFloat);
+
    // Output the float right justified in a field width of 10 with  
    // a precision of 2 places after the decimal point for the float. 
    //
-   cout << "  Float: " 
-        << setw(10) << setprecision(2)
-        << resetiosflags( ios::left )
-        << setiosflags( ios::fixed | ios::showpoint )
-        << aFloat << " ###" << endl;
- 
+
+   printf("  Float: %10.2f ###\n", aFloat);
+
    // Output the float with 3 places of precision after the decimal point but
    // not giving a field width.
    //
-   cout << "  Float: " << setprecision(3) << aFloat << " ###\n";
- 
+
+   printf("  Float: %0.3f ###\n", aFloat);
+
    // Output the float with 3 places of precision after the decimal point with
    // a field width of 10.  The other flags set above are still in effect.
    //
-   cout << "  Float: " << setprecision(3) << setw(10) 
-        << aFloat << " ###\n";
-  
+
+   printf("  Float: %10.3f ###\n", aFloat);
+
    // Output the float with 4 places of precision after the decimal point with 
    // a field width of 10 and left justify the number.
    //
-   cout << setprecision(4) << setiosflags( ios::left );
-   cout << "  Float: " << setw(10) << aFloat << " ###\n\n";
- 
+   printf("  Float: %-10.4f ###\n", aFloat);
+
+
    /*********************************************************************
     *************** Create some code to output a table ******************
     *********************************************************************
@@ -143,29 +133,29 @@ int main (void)
    /*********************************************************************
     *************** Now play with pointers to finish up *****************
     *********************************************************************/
+
+   
+   int *p1 =42;
+   int *p2 =*&p1;
+   
+
+   printf("\n*p1 == %d\n", *&p1);
+   printf("*p2 == %d\n", *&p2);
+   
+   p2 =53;
+
+   printf("*p1 == %d\n", *&p1);
+   printf("*p2 == %d\n", *&p2);
+
+   p1 = 88;
+   printf("*p1 == %d\n", *&p1);
+   printf("*p2 == %d\n", *&p2);
  
-   int *p1;
-   int *p2;
- 
-   p1 = new int;
-   *p1 = 42;
-   p2 = p1;
-   cout << "*p1 == " << *p1 << endl;
-   cout << "*p2 == " << *p2 << endl;
- 
-   *p2 = 53;
-   cout << "*p1 == " << *p1 << endl;
-   cout << "*p2 == " << *p2 << endl;
- 
-   p1 = new int;
-   *p1 = 88;
-   cout << "*p1 == " << *p1 << endl;
-   cout << "*p2 == " << *p2 << endl;
- 
-   cout << "Hope you got the point of this example!\n";
+   printf("Hope you got the point of this example!\n");
  
    delete p1;
    delete p2;
+   
 
    return 0;
 }
