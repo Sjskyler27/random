@@ -3,7 +3,7 @@
 *    Lab C_lab, ECEN 324 Learning C Lab
 *    Brother Jones, ECEN 324
 * Author:
-*    Your Name
+*    Your Namess
 * Summary:
 *    Descriptive text ...
 ************************************************************************/
