@@ -152,7 +152,6 @@ int main()
    printf("*p2 == %d\n", *&p2);
  
    printf("Hope you got the point of this example!\n");
-
    
 
    return 0;
