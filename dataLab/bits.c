@@ -166,7 +166,8 @@ NOTES:
  *   Rating: 1
  */
 int bitNor(int x, int y) {
-  return 2;
+   int result = ~x & ~y;
+  return result;
 }
 /* 
  * bitXor - x^y using only ~ and & 
@@ -176,12 +177,12 @@ int bitNor(int x, int y) {
  *   Rating: 2
  */
 int bitXor(int x, int y) {
-
-
-
-
-  return 2;
-
+   int result = ~((~(~(x & y) & x)) & (~(~(x & y) & y))); 
+   //int a = ~(x & y);
+   //int b = ~(x & a);
+   //int c = ~(a & y);
+   //int result = ~(b & c);
+	return result;
 }
 /* 
  * isNotEqual - return 0 if x == y, and 1 otherwise 
@@ -191,7 +192,9 @@ int bitXor(int x, int y) {
  *   Rating: 2
  */
 int isNotEqual(int x, int y) {
-  return 2;
+  int result = !!(x ^ y);
+
+  return result;
 }
 /* 
  * getByte - Extract byte n from word x
@@ -202,7 +205,11 @@ int isNotEqual(int x, int y) {
  *   Rating: 2
  */
 int getByte(int x, int n) {
-  return 2;
+   int result;
+   
+   result = (x >> (n << 3)) & 0xFF;
+   
+  return result;
 }
 /* 
  * copyLSB - set all bits of result to least significant bit of x
@@ -212,7 +219,10 @@ int getByte(int x, int n) {
  *   Rating: 2
  */
 int copyLSB(int x) {
-  return 2;
+   int result;
+   result = ((x << 31) >> 31);
+   return result;
+   
 }
 /* 
  * logicalShift - shift x to the right by n, using a logical shift
@@ -223,7 +233,10 @@ int copyLSB(int x) {
  *   Rating: 3 
  */
 int logicalShift(int x, int n) {
-  return 2;
+  int result;
+   result = x >> n;
+   int left = ~(~0 << (32 + ~n) << 1);
+   return result & left;
 }
 /*
  * bitCount - returns count of number of 1's in word
