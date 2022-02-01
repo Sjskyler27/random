@@ -134,23 +134,48 @@ int main()
     *************** Now play with pointers to finish up *****************
     *********************************************************************/
 
-   
-   int *p1 =42;
-   int *p2 =*&p1;
-   
+   int i=97;
+   printf("\tOct   Dec   Hex   Char\n");
+   printf("\t----------------------\n");
 
-   printf("\n*p1 == %d\n", *&p1);
-   printf("*p2 == %d\n", *&p2);
+   do{
+      printf("\t%o   %d    %x    %c\n",i,i,i,i);
+      i=i+1;
+   }while(i<100);
+
+   do{
+      printf("\t%o   %d   %x    %c\n",i,i,i,i);
+      i=i+1;
+   }while(i<123);
+
+
+
    
-   p2 =53;
+   int *p1;
+   int *p2;
+   
+   p1 = (int *)malloc(sizeof(int));
+   *p1 = 42;
+   
+   p2 = p1;
 
-   printf("*p1 == %d\n", *&p1);
-   printf("*p2 == %d\n", *&p2);
+   printf("\n*p1 == %d\n", *p1);
+   printf("*p2 == %d\n", *p2);
+   
+   *p2 =53;
 
-   p1 = 88;
-   printf("*p1 == %d\n", *&p1);
-   printf("*p2 == %d\n", *&p2);
+   printf("*p1 == %d\n", *p1);
+   printf("*p2 == %d\n", *p2);
+   
+   p1 = (int *)malloc(sizeof(int));
+
+   *p1 = 88;
+   printf("*p1 == %d\n", *p1);
+   printf("*p2 == %d\n", *p2);
  
+   free(p1);
+   free(p2);
+    
    printf("Hope you got the point of this example!\n");
    
 
