@@ -3,9 +3,11 @@
 *    Lab Datalab
 *    Brother Jones, ECEN 324
 * Author:
-*    Your Name
+*    Skyler Simpson  
+      Kevin altamir
+      Jacob muler
 * Summary:
-*    descriptive text
+*    Test your skills in programing without statmeants.
 ***********************************************************************/
 
 /* 
@@ -246,6 +248,16 @@ int logicalShift(int x, int n) {
  *   Rating: 4
  */
 int bitCount(int x) {
+int m1=0x11 | (0x11<<8);
+  int mask=m1 | (m1<<16);
+  int s = x&mask;
+  s+=x>>1&mask;
+  s+=x>>2&mask;
+  s+=x>>3&mask;
+  s=s+(s>>16);
+  mask=0xf | (0xf<<8);
+  s=(s&mask)+((s>>4)&mask);
+  return (s+(s>>8))&0x3f;
   return 2;
 }
 /* 
@@ -256,7 +268,8 @@ int bitCount(int x) {
  *   Rating: 4 
  */
 int bang(int x) {
-  return 2;
+  int oppo = (~x)+1;//the opposite
+  return (~((x|oppo)>>31))&1;
 }
 /* 
  * leastBitPos - return a mask that marks the position of the
@@ -267,7 +280,7 @@ int bang(int x) {
  *   Rating: 4 
  */
 int leastBitPos(int x) {
-  return 2;
+  return x&(~x+1);
 }
 /* 
  * TMax - return maximum two's complement integer 
@@ -276,7 +289,9 @@ int leastBitPos(int x) {
  *   Rating: 1
  */
 int tmax(void) {
-  return 2;
+  unsigned int x = ~0u;
+  x >>= 1;
+  return x;
 }
 /* 
  * isNonNegative - return 1 if x >= 0, return 0 otherwise 
@@ -286,8 +301,7 @@ int tmax(void) {
  *   Rating: 3
  */
 int isNonNegative(int x) {
-  return 2;
-}
+  return !(x&(0x1<<31));
 /* 
  * isGreater - if x > y  then return 1, else return 0 
  *   Example: isGreater(4,5) = 0, isGreater(5,4) = 1
@@ -296,7 +310,10 @@ int isNonNegative(int x) {
  *   Rating: 3
  */
 int isGreater(int x, int y) {
-  return 2;
+   int sx = (x>>31)&0x1;
+	int sy = (y>>31)&0x1;
+	int sa = (x+(~y)+1);
+	return (((sx^sy)&sy)|((!(sx^sy))&(!!sa)&!((sa>>31)&0x1)));
 }
 /* 
  * divpwr2 - Compute x/(2^n), for 0 <= n <= 30
@@ -307,7 +324,7 @@ int isGreater(int x, int y) {
  *   Rating: 2
  */
 int divpwr2(int x, int n) {
-    return 2;
+    return (x+(((x>>31)&0x1)<<n)+~((x>>31)&0x1)+0x1)>>n;
 }
 /* 
  * abs - absolute value of x (except returns TMin for TMin)
@@ -317,7 +334,8 @@ int divpwr2(int x, int n) {
  *   Rating: 4
  */
 int abs(int x) {
-  return 2;
+  int test = x >> 31;
+   return (~test & x) | (test & (~x + 1));
 }
 /* 
  * addOK - Determine if can compute x+y without overflow
@@ -328,5 +346,6 @@ int abs(int x) {
  *   Rating: 3
  */
 int addOK(int x, int y) {
-  return 2;
+   int test = x >> 31;
+   return (~test & x) | (test & (~x + 1));
 }
