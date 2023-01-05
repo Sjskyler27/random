@@ -121,7 +121,7 @@ const selectedLetters = document.querySelector('#selected-letters');
     vowelsContainer.removeChild(vowelsContainer.firstChild);
   }
 
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 8; i++) {
     // Choose a random consonant
     const consonant = consonants[Math.floor(Math.random() * consonants.length)];
 
@@ -134,7 +134,7 @@ const selectedLetters = document.querySelector('#selected-letters');
     consonantsContainer.appendChild(consonantElement);
   }
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 5; i++) {
     // Choose a random vowel
     const vowel = vowels[Math.floor(Math.random() * vowels.length)];
 
