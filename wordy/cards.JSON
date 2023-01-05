@@ -1,0 +1,98 @@
+[
+    {
+      "name": "RHYME TIME",
+      "description": "Your opponent says a valid word that rhymes with their Secret Word. If no rhyming word exists, they have to make one up.",
+      "type": "Spicy",
+      "value": 5
+    },
+    {
+      "name": "Give and take",
+      "description": "You and your opponent each reveal one Letter Tile that hasn't ready been revealed in each of your Secret Words. If your word has any duplicate Letter Tiles, treat them separately. This can't be used your opponent your Secret Word.",
+      "type": "Spicy",
+      "value": 1
+    },
+    {
+      "name": "BURN THE COPIES",
+      "description": "Choose a letter that appears in your set of tiles. Your opponent tells you how many times that letter appears in the Secret Word.",
+      "type": "Spicy",
+      "value": 2
+    },
+    {
+      "name": "SUPER STRIKE",
+      "description": "Choose a letter from the set of tiles in front of you. Your opponent tells you the position of one instance of that Letter Tile in their Secret Word.",
+      "type": "Spicy",
+      "value": 3
+    },
+    {
+      "name": "Rare find",
+      "description": "Your opponent will tell you whether or not their word uses a jxqz or y.",
+      "type": "Spicy",
+      "value": 1
+    },
+    {
+      "name": "Buy a vowel",
+      "description": "Your opponent will tell you a vowel that is in the word that has not been given to you yet.",
+      "type": "Spicy",
+      "value": 1
+    },
+    {
+      "name": "Consonant count",
+      "description": "Your opponent will tell you exactly how many consonants there are in their Secret Word.",
+      "type": "Spicy",
+      "value": 3
+    },
+    {
+      "name": "Let's share",
+      "description": "Choose a letter that is in both sets of tiles. You and your opponent tell each other how many times that letter appears in each of your Secret Words. This can't be used if your opponent has already correctly guessed your Secret Word.",
+      "type": "Spicy",
+      "value": 1
+    },
+    {
+      "name": "Vowel count",
+      "description": "Your opponent will tell you exactly how many vowels appear in their word.",
+      "type": "Spicy",
+      "value": 2
+    },
+    {
+      "name": "DYNAMIC WORD BUILDER",
+      "description": "Build a valid word from the letters in front of you. Your opponent flips over face-down tiles for every letter in the word you build that does not appear in the Secret Word. Treat duplicate Letter Tiles as separate. The Cost of this card is not Zero it is the number of tiles remaining face up.",
+      "type": "Spicy",
+      "value": 0
+    },
+    {
+      "name": "FIRST LETTER",
+      "description": "Your opponent tells you the first letter of their Secret Word.",
+      "type": "Regular",
+      "value": 4
+    },
+    {
+        "name": "WORD BUILDER",
+        "description": "Build a valid word from the letters in front of you. Your opponent flips over face-down tiles for every letter in the word you build that does not appear in the Secret Word. Treat duplicate Letter Tiles as separate.",
+        "type": "Regular",
+        "value": 4
+      },
+    {
+      "name": "Letter strike",
+      "description": "Choose a letter from the set of tiles in front of you. Your opponent tells you if that letter is in their word.",
+      "type": "Regular",
+      "value": 2
+    },
+    {
+        "name": "Exact word length",
+        "description": "Your opponent tells you the exact length of their Secret Word.",
+        "type": "Regular",
+        "value": 3
+      },
+      {
+        "name": "Last letter",
+        "description": "Your opponent tells you the last letter of their Secret Word.",
+        "type": "Regular",
+        "value": 1
+      },      
+      {
+        "name": "RELATIVE WORD LENGTH",
+        "description": "Build a valid word from the letters in front of you. Your opponent tells you whether it is less than, greater than, or the exact length of the word that you build.",
+        "type": "Regular",
+        "value": 1
+      }
+]

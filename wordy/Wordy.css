@@ -1,0 +1,179 @@
+#letter-selection {
+  display: flex;
+  flex-direction: column; /* Change the flex direction to column */
+  align-items: center; /* Center the elements within the container */
+}
+  
+  #consonants, #vowels {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  #consonants .letter {
+    background-color: darkred;
+    color: white;
+  }
+  
+  #consonants .letter:hover {
+    background-color: rgb(131, 131, 131);
+  }
+  
+  #vowels .letter {
+    background-color: rgb(131, 131, 131);
+    color: white;
+  }
+  
+  #vowels .letter:hover {
+    background-color: darkred;
+  }
+  
+  .letter {
+    border: none;
+    padding: 8px 12px;
+    margin: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 4px;
+  }
+  
+ #selected-letters{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  
+ }
+
+  #selected-letters .letter{
+    padding: 2px;
+    border-radius: 8px;
+    
+    background-color: darkred;
+    color:white;
+    font-size: 18px;
+    border-radius: 4px;
+    border: none;
+    padding: 8px 12px;
+    margin: 4px;
+    
+  }
+
+  #selected-letters .letter:hover {
+    background-color: rgb(131, 131, 131);
+  }
+
+  
+
+  button{
+    background-color: darkred; /* Same color as consonants */
+  border: none;
+  color: white;
+  padding: 8px 12px; /* Same padding as letters */
+  font-size: 18px; /* Same font size as letters */
+  border-radius: 4px; /* Same border radius as letters */
+  cursor: pointer;
+  margin: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button:hover {
+  background-color: darkgray; /* Same hover color as consonants */
+}
+  
+#card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* Create four equal-width columns */
+  justify-items: center; /* Center the elements horizontally within their grid cells */
+  align-items: center; /* Center the elements vertically within their grid cells */
+  grid-gap: 20px; /* Add a 20 pixel gap between the grid cells */
+}
+    
+  .card {
+    
+    width: 200px;
+    height: 300px;
+    max-width: 200px; /* Set the maximum width of the element to 25% of the total width of the flex container */
+    max-height: 300px; /* Set the maximum height of the element to its previous value */
+    border: 4px solid rgb(131, 131, 131);
+    border-radius: 6px;
+    margin: 10px;
+  
+    padding: 10px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .card-title {
+    font-family: Times New Roman; /* Set the font to a font similar to traditional playing cards */
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 20px;
+  }
+  
+  .card-description {
+    font-family: Times New Roman; /* Set the font to a font similar to traditional playing cards */
+    font-size: 16px;
+  }
+  
+  .card-type {
+    font-family: Times New Roman; /* Set the font to a font similar to traditional playing cards */
+    font-size: 16px;
+    font-style: italic;
+    padding-bottom: 0;
+    left:50%;
+    transform: translate(-40%);
+    position: absolute; /* Add this to position the element relative to its nearest positioned ancestor */
+    bottom: 20px; /* Add this to position the element at the bottom of the card element */
+  }
+  .card-value {
+    font-style: bold;
+    font-weight: 300;
+    font-size: large;
+    padding-top: 0;
+    left:50%;
+    position: absolute; /* Add this to position the element relative to its nearest positioned ancestor */
+    bottom: 0; /* Add this to position the element at the bottom of the card element */
+  }
+  
+  /* Add decorative elements to the corners of the cards using the ::before and ::after pseudo-elements */
+  /* .card::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 50%;
+    position: relative;
+    top: 10px;
+    left: 10px;
+  }
+  
+  .card::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 50%;
+    position: relative;
+    top: 10px;
+    right: 10px;
+  } */
+  
+  .spicy {
+    background-color: #FFA07A;
+  }
+  .regular {
+    background-color: #87CEEB;
+    /* alternate ADD8E6 */
+  }
+
+  @media only screen and (max-width: 1200px) {
+    #card-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 4px;
+    }
+  }

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="wordy.css">
+</head>
+<body>
+    <div id="letter-selection">
+        <div id="consonants">
+            <!-- <button class="letter"></button>
+            <button class="letter"></button>
+            <button class="letter"></button>
+            <button class="letter"></button>
+            <button class="letter"></button>
+            <button class="letter"></button>
+            <button class="letter"></button> -->
+        </div>
+        <br>
+        <div id="vowels">
+            <!-- <button class="letter"></button>
+            <button class="letter"></button>
+            <button class="letter"></button>
+            <button class="letter"></button> -->
+        </div>
+      </div>
+      <button id="randomize-button", onclick="populateContainers()">Randomize</button>
+
+<div id="selected-letters">
+</div>
+
+<button id="generate-cards-button">Generate Cards</button>
+    <div id="card-container"></div>
+
+
+</body>
+</html>
+<script>
+    const consonants = ['b', 'b', 'c', 'c', 'c', 'd', 'd', 'd', 'd', 'f', 'f', 'f', 'g', 'g', 'h', 'h', 'h', 'h', 'j', 'k', 'l', 'l', 'l', 'l', 'm', 'm', 'm', 'n', 'n', 'n', 'n', 'n', 'p', 'p', 'q', 'r', 'r', 'r', 'r', 'r', 's', 's', 's', 's', 't', 't', 't', 't', 't', 't', 'v', 'w', 'w', 'x', 'y', 'y', 'z'];
+    //const vowels = ['A', 'E', 'I', 'O', 'U'];
+    const vowels = ['a', 'a', 'a', 'a', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'i', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u'];
+    
+    const consonantsContainer = document.querySelector('#consonants');
+const vowelsContainer = document.querySelector('#vowels');
+const selectedLetters = document.querySelector('#selected-letters');
+
+consonantsContainer.addEventListener('click', function(event) {
+  if (event.target.classList.contains('letter')) {
+    selectedLetters.appendChild(event.target);
+    console.log(event.target.document.innerHTML)
+    changeColor();
+  }
+});
+
+vowelsContainer.addEventListener('click', function(event) {
+  if (event.target.classList.contains('letter')) {
+    selectedLetters.appendChild(event.target);
+    changeColor();
+  }
+});
+
+//change the color of the selected letters according to the vowel or consonent
+function changeColor(){
+    // Get the div element
+    const selectedLettersDiv = document.getElementById('selected-letters');
+    
+    // Get all the child elements within the div
+    const letters = selectedLettersDiv.children;
+    
+    // Loop through the child elements
+    for (let letter of letters) {
+      // Check if the letter is a vowel or consonant
+      if (letter.innerText.match(/[aeiou]/i)) {
+      // If it's a vowel, set the background color to blue
+      letter.style.backgroundColor = 'grey';
+      letter.style.Color = 'white';
+      
+    } else {
+      // If it's a consonant, set the background color to red
+      letter.style.backgroundColor = 'darkred';
+    }
+    }
+}
+
+selectedLetters.addEventListener('click', function(event) {
+  if (event.target.classList.contains('letter')) {
+    letter = event.target.textContent;
+    console.log(vowels);
+    console.log(letter);
+        if(vowels.includes(letter)) {
+            vowelsContainer.appendChild(event.target);
+        }
+        else if(consonants.includes(letter)) {
+            consonantsContainer.appendChild(event.target);
+        }
+    }
+  });
+
+  function populateContainers() {
+  const consonantsContainer = document.querySelector('#consonants');
+  const vowelsContainer = document.querySelector('#vowels');
+const selectedLetters = document.querySelector('#selected-letters');
+
+  // //return selected elements
+  if (selectedLetters.childElementCount > 0) {
+    console.log('yeye');
+    while (selectedLetters.firstChild) {
+      selectedLetters.removeChild(selectedLetters.firstChild);
+    }
+}
+
+  // Remove all existing consonant elements
+  while (consonantsContainer.firstChild) {
+    consonantsContainer.removeChild(consonantsContainer.firstChild);
+  }
+
+  // Remove all existing vowel elements
+  while (vowelsContainer.firstChild) {
+    vowelsContainer.removeChild(vowelsContainer.firstChild);
+  }
+
+  for (let i = 0; i < 7; i++) {
+    // Choose a random consonant
+    const consonant = consonants[Math.floor(Math.random() * consonants.length)];
+
+    // Create element for consonant
+    const consonantElement = document.createElement('div');
+    consonantElement.classList.add('letter');
+    consonantElement.innerHTML = consonant;
+
+    // Append consonant element to the container
+    consonantsContainer.appendChild(consonantElement);
+  }
+
+  for (let i = 0; i < 4; i++) {
+    // Choose a random vowel
+    const vowel = vowels[Math.floor(Math.random() * vowels.length)];
+
+    // Create element for vowel
+    const vowelElement = document.createElement('div');
+    vowelElement.classList.add('letter');
+    vowelElement.innerHTML = vowel;
+
+    // Append vowel element to the container
+    vowelsContainer.appendChild(vowelElement);
+  }
+}
+// Call the function when the page loads
+window.onload = populateContainers;
+
+
+//generate the cards
+
+const generateCardsButton = document.getElementById('generate-cards-button');
+const cardContainer = document.getElementById('card-container');
+
+// The array of cards
+let cards;
+
+// Fetch the cards from the JSON file
+fetch('./cards.json')
+  .then(response => response.json())
+  .then(data => {
+    cards = data;
+    // Function to generate four random cards of a given type
+    function generateRandomCards(type) {
+      let generatedCards = [];
+      for (let i = 0; i < 4; i++) {
+        // Generate a random index within the array of cards
+        let randomIndex = Math.floor(Math.random() * cards.length);
+
+        // Get the card at the random index
+        let card = cards[randomIndex];
+
+        // If the card has the correct type, and has not been used, add it to the generated cards array
+        if (card.type === type && !generatedCards.includes(card)) {
+          generatedCards.push(card);
+        } else {
+          // If the card has the wrong type, decrement the loop counter so that we generate another card
+          i--;
+        }
+      }
+      return generatedCards;
+    }
+
+    // Function to create and append a card element to the card container
+    function appendCard(card) {
+      // Create the card element
+      const cardElement = document.createElement('div');
+      cardElement.classList.add('card');
+      cardElement.classList.add(card.type.toLowerCase());
+
+      
+      // Create the title element
+      const titleElement = document.createElement('div');
+      titleElement.classList.add('card-title');
+      titleElement.textContent = card.name;
+      
+      // Create the description element
+      const descriptionElement = document.createElement('div');
+      descriptionElement.classList.add('card-description');
+      descriptionElement.textContent = card.description;
+      
+      // Create the type element
+      const typeElement = document.createElement('div');
+      typeElement.classList.add('card-type');
+      typeElement.textContent = card.type;
+      
+      // Create the title element
+      const valueElement = document.createElement('div');
+      valueElement.classList.add('card-value');
+      valueElement.textContent = card.value;
+
+      // Append the title, description, and type elements to the card element
+      cardElement.appendChild(titleElement);
+      cardElement.appendChild(descriptionElement);
+      cardElement.appendChild(typeElement);
+      cardElement.appendChild(valueElement);
+
+
+      // Append the card element to the card container
+      cardContainer.appendChild(cardElement);
+    }
+
+    generateCardsButton.addEventListener('click', () => {
+      // Clear the card container
+      cardContainer.innerHTML = '';
+
+      // Generate four random spicy cards and four random regular cards
+      const spicyCards = generateRandomCards('Spicy');
+      const regularCards = generateRandomCards('Regular');
+
+      // Append the spicy cards to the card container
+      spicyCards.forEach(card => appendCard(card));
+
+      // Append the regular cards to the card container
+      regularCards.forEach(card => appendCard(card));
+    });
+  });
+
+//create web socket to make a lobby
+1
+if(window.WebSocket){
+  console. log( "Web Sockets are supported");
+  url = "ws : / /http://127.0.0.1:5500/Wordy.html . extension : port " ;
+  var ws = new WebSocket(ur1);
+  ws.send("Message To Server");
+  ws.close();
+  
+} else {
+console. log("Looks like you are using an old browser");
+}
+</script>
