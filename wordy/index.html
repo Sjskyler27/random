@@ -160,7 +160,7 @@ const cardContainer = document.getElementById('card-container');
 let cards;
 
 // Fetch the cards from the JSON file
-fetch('./cards.JSON')
+fetch('./cards.json')
   .then(response => response.json())
   .then(data => {
     cards = data;
