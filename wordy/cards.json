@@ -55,7 +55,7 @@
     },
     {
       "name": "DYNAMIC WORD BUILDER",
-      "description": "Build a valid word from the letters in front of you. Your opponent flips over face-down tiles for every letter in the word you build that does not appear in the Secret Word. Treat duplicate Letter Tiles as separate. The Cost of this card is not Zero it is the number of tiles remaining face up.",
+      "description": "Build a valid word from the letters in front of you. Your opponent flips over face-down tiles for every letter in the word you build that does not appear in the Secret Word. Treat duplicate Letter Tiles as separate. The Cost of this card is the number of tiles remaining face up.",
       "type": "Spicy",
       "value": 0
     },

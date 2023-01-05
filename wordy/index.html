@@ -26,12 +26,21 @@
             <button class="letter"></button> -->
         </div>
       </div>
-      <button id="randomize-button", onclick="populateContainers()">Randomize</button>
-
+      
+<div id = "notes">
+<textarea id = "noteArea"></textarea>
+</div>
 <div id="selected-letters">
 </div>
 
-<button id="generate-cards-button">Generate Cards</button>
+<!-- <button id="generate-cards-button", onclick="generateNewCards()">Generate Cards</button> -->
+<div id="counter">
+  <button id="decrement">-</button>
+  <output id="count">0</output>
+  <button id="increment">+</button>
+</div>
+<button id="play-again-button", onclick="populateContainers()">Play Again</button>
+<br>
     <div id="card-container"></div>
 
 
@@ -74,7 +83,7 @@ function changeColor(){
       // Check if the letter is a vowel or consonant
       if (letter.innerText.match(/[aeiou]/i)) {
       // If it's a vowel, set the background color to blue
-      letter.style.backgroundColor = 'grey';
+      letter.style.backgroundColor = 'black';
       letter.style.Color = 'white';
       
     } else {
@@ -99,6 +108,7 @@ selectedLetters.addEventListener('click', function(event) {
   });
 
   function populateContainers() {
+
   const consonantsContainer = document.querySelector('#consonants');
   const vowelsContainer = document.querySelector('#vowels');
 const selectedLetters = document.querySelector('#selected-letters');
@@ -146,14 +156,38 @@ const selectedLetters = document.querySelector('#selected-letters');
     // Append vowel element to the container
     vowelsContainer.appendChild(vowelElement);
   }
+
+  
 }
 // Call the function when the page loads
-window.onload = populateContainers;
+window.onload = populateContainers();
+
+
+
+
+//add berry incrementer
+const decrementButton = document.querySelector('#decrement');
+const incrementButton = document.querySelector('#increment');
+const countOutput = document.querySelector('#count');
+
+let count = 0;
+
+decrementButton.addEventListener('click', () => {
+  if (count> 0){
+  count--;
+  countOutput.value = count;
+  }
+});
+
+incrementButton.addEventListener('click', () => {
+  count++;
+  countOutput.value = count;
+});
 
 
 //generate the cards
 
-const generateCardsButton = document.getElementById('generate-cards-button');
+const generateCardsButton = document.getElementById('play-again-button');
 const cardContainer = document.getElementById('card-container');
 
 // The array of cards
@@ -240,8 +274,15 @@ fetch('./cards.json')
     });
   });
 
+
+  document.getElementById("play-again-button").addEventListener('click', () => {
+  //reset other properties of the game 
+  document.getElementById("noteArea").innerHTML = "";
+});
+
+
 //create web socket to make a lobby
-1
+
 if(window.WebSocket){
   console. log( "Web Sockets are supported");
   url = "ws : / /http://127.0.0.1:5500/Wordy.html . extension : port " ;
