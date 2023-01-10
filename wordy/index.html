@@ -46,19 +46,20 @@
 </body>
 </html>
 <script>
-    const consonants = ['b', 'b', 'c', 'c', 'c', 'd', 'd', 'd', 'd', 'f', 'f', 'f', 'g', 'g', 'h', 'h', 'h', 'h', 'j', 'k', 'l', 'l', 'l', 'l', 'm', 'm', 'm', 'n', 'n', 'n', 'n', 'n', 'p', 'p', 'q', 'r', 'r', 'r', 'r', 'r', 's', 's', 's', 's', 't', 't', 't', 't', 't', 't', 'v', 'w', 'w', 'x', 'y', 'y', 'z'];
-    //const vowels = ['A', 'E', 'I', 'O', 'U'];
-    const vowels = ['a', 'a', 'a', 'a', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'i', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u'];
-    
+  //const vowels = ['A', 'E', 'I', 'O', 'U'];
+  const consonants = ["B", "B", "C", "C", "C", "D", "D", "D", "D", "F", "F", "F", "G", "G", "H", "H", "H", "H", "J", "K", "L", "L", "L", "L", "M", "M", "M", "N", "N", "N", "N", "N", "P", "P", "Q", "R", "R", "R", "R", "R", "S", "S", "S", "S", "T", "T", "T", "T", "T", "T", "V", "W", "W", "X", "Y", "Y", "Z"];
+    const vowels =['A', 'A', 'A', 'A', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'I', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U'];
+
     const consonantsContainer = document.querySelector('#consonants');
 const vowelsContainer = document.querySelector('#vowels');
 const selectedLetters = document.querySelector('#selected-letters');
 
+//listen for the letter to be clicked and append it to the selected letters with the right color
 consonantsContainer.addEventListener('click', function(event) {
   if (event.target.classList.contains('letter')) {
     selectedLetters.appendChild(event.target);
-    console.log(event.target.document.innerHTML)
-    changeColor();
+    //console.log(event.target.document.innerHTML);
+    //changeColor();
   }
 });
 
@@ -70,27 +71,24 @@ vowelsContainer.addEventListener('click', function(event) {
 });
 
 //change the color of the selected letters according to the vowel or consonent
-function changeColor(){
-    // Get the div element
-    const selectedLettersDiv = document.getElementById('selected-letters');
+//currently strugling, it returns the vowels with new data and the are no longer highlighting f12 to see more
+// function changeColor(){
+//     // Get the div element
+//     const selectedLettersDiv = document.getElementById('selected-letters');
     
-    // Get all the child elements within the div
-    const letters = selectedLettersDiv.children;
+//     // Get all the child elements within the div
+//     const letters = selectedLettersDiv.children;
     
-    // Loop through the child elements
-    for (let letter of letters) {
-      // Check if the letter is a vowel or consonant
-      if (letter.innerText.match(/[aeiou]/i)) {
-      // If it's a vowel, set the background color to blue
-      letter.style.backgroundColor = 'black';
-      letter.style.Color = 'white';
+//     // Loop through the child elements
+//     for (let letter of letters) {
+//       // Check if the letter is a vowel or consonant
+//       if (letter.innerText.match(/[aeiou]/i)) {
+//       // If it's a vowel, set the background color to grey
+//       letter.style.backgroundColor = '#666666';
       
-    } else {
-      // If it's a consonant, set the background color to red
-      letter.style.backgroundColor = 'darkred';
-    }
-    }
-}
+//     }
+//     }
+// }
 
 selectedLetters.addEventListener('click', function(event) {
   if (event.target.classList.contains('letter')) {
@@ -106,15 +104,16 @@ selectedLetters.addEventListener('click', function(event) {
     }
   });
 
+
+  //create the letters
   function populateContainers() {
 
   const consonantsContainer = document.querySelector('#consonants');
   const vowelsContainer = document.querySelector('#vowels');
 const selectedLetters = document.querySelector('#selected-letters');
 
-  // //return selected elements
+//remove currrent vowels
   if (selectedLetters.childElementCount > 0) {
-    console.log('yeye');
     while (selectedLetters.firstChild) {
       selectedLetters.removeChild(selectedLetters.firstChild);
     }
@@ -182,6 +181,10 @@ incrementButton.addEventListener('click', () => {
   count++;
   countOutput.value = count;
 });
+
+
+
+
 
 
 //generate the cards
