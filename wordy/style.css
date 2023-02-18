@@ -18,18 +18,14 @@
     color: white;
   }
   
-  #consonants .letter:hover {
-    background-color: #666666;
-  }
+  
   
   #vowels .letter {
     background-color: #666666;
     color: white;
   }
   
-  #vowels .letter:hover {
-    background-color: darkred;
-  }
+  
   
   .letter {
     border: none;
