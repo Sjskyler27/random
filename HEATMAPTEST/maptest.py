@@ -178,14 +178,27 @@ class Race:
         
 
 #MAIN
-raceArray = []
-debug = False
 
+userinput = input('Debug? (y/n)')
+
+if userinput == 'y':
+    debug = True
+else:
+    debug = False
+
+start = 1
+end = 2
+start = input('enter first map in range that you want to test. (i.e. 1,4,6)')
+end = input('enter last map in range that you want to test. (i.e. 1,4,6)')
+end = int(end)+1
+
+input
+raceArray = []
 if debug:
     times = 1
 else:
     times = 30
-for i in range(1,7):
+for i in range(int(start),int(end)):
     race = Race('./HEATMAPTEST/RaceMaps.xlsx', f'MAP ({i})',times)
     raceArray.append(race)
 
