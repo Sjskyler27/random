@@ -4,7 +4,7 @@ import os
 import threading
 debug = True
 
-print(os.getcwd())  # prints the current working directory
+# print(os.getcwd())  # prints the current working directory
 
 class Bot:
     def __init__(self, name, ws, position=0, timetocorner=0, currentcorner=0, speedofcorner=0):
@@ -160,7 +160,8 @@ class Race:
             while black.finish == False:
                 black.drawCard()
                 black.move()
-                black.getMapValues(self.worksheet)
+                if black.finish== False:
+                    black.getMapValues(self.worksheet)
             
             num_rows = 0
             for cell in self.worksheet['H']:
@@ -179,6 +180,7 @@ class Race:
 
 #MAIN
 
+print(f'\npath\n{os.getcwd()}')
 userinput = input('Debug? (y/n)')
 
 if userinput == 'y':
@@ -199,11 +201,13 @@ if debug:
 else:
     times = 30
 for i in range(int(start),int(end)):
-    race = Race('./HEATMAPTEST/RaceMaps.xlsx', f'MAP ({i})',times)
+    race = Race(f'{os.getcwd()}\RaceMaps.xlsx', f'MAP ({i})',times)
     raceArray.append(race)
 
 for r in raceArray:
     r.start_race()
+
+input('FINISHED press any key to quit')
 
 #unfortanatly threading wont work because of reading and writing to a single file.
 # threads = []
