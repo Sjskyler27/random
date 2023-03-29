@@ -169,8 +169,8 @@ class Race:
                     num_rows += 1
 
             value = black.turnstaken  # replace with the value you want to append
-            print(f'pasting turns taken: {black.turnstaken} to row {num_rows+1} in {self.sheet}')
-            print(f'save {black.wassaveneeded}') if debug else None
+            print(f'Special turn required: {black.wassaveneeded} \n') if debug else None
+            print(f'pasting turns taken to row {num_rows+1} in {self.sheet} [{self.worksheet.cell(row=2, column=7).value}]:  {black.turnstaken}')
             self.worksheet.cell(row=num_rows+1, column=8, value=value)
             self.workbook.save(self.track_file)
 
@@ -199,7 +199,7 @@ raceArray = []
 if debug:
     times = 1
 else:
-    times = 30
+    times = 40
 for i in range(int(start),int(end)):
     race = Race(f'{os.getcwd()}\RaceMaps.xlsx', f'MAP ({i})',times)
     raceArray.append(race)
@@ -207,7 +207,7 @@ for i in range(int(start),int(end)):
 for r in raceArray:
     r.start_race()
 
-input('FINISHED press any key to quit')
+input('\nFINISHED press ENTER to quit')
 
 #unfortanatly threading wont work because of reading and writing to a single file.
 # threads = []
